@@ -1,7 +1,7 @@
 import { Router } from "express";
 import  multer from 'multer';
-import { AnimalsRepository } from "../repositories/AnimalsRepository";
-import { CreateAnimalService } from "../services/CreateAnimalService";
+import { AnimalsRepository } from "../modules/animals/repositories/AnimalsRepository";
+import { CreateAnimalService } from "../modules/animals/services/CreateAnimalService";
 
 const animalsRoutes = Router();
 const upload = multer();
