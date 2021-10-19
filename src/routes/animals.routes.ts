@@ -1,8 +1,11 @@
 import { Router } from "express";
+import  multer from 'multer';
 import { AnimalsRepository } from "../repositories/AnimalsRepository";
 import { CreateAnimalService } from "../services/CreateAnimalService";
 
 const animalsRoutes = Router();
+const upload = multer();
+
 const animalsRepository = new AnimalsRepository();
 
 animalsRoutes.post("/", (request, response) => {
@@ -45,6 +48,10 @@ animalsRoutes.get("/", (request, response) =>{
     const all = animalsRepository.list();
 
     return response.json(all);
+});
+
+animalsRoutes.post("/import/", (request, response) =>{
+
 })
 
 export { animalsRoutes };
