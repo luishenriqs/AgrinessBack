@@ -1,26 +1,7 @@
 import { Animal } from '../model/Animal';
+import { IAnimalsRepository, ICreateAnimalDTO } from './IAnimalsRepository';
 
-interface IFaseTipo {
-    sigla: string;
-    descricao: string;
-}
-
-interface ICreateAnimalDTO {
-    id: string;
-    nome: string;
-    tipoAnimal: string;
-    statusAnimal: number;
-    localizacao: string;
-    dataNascimento: string;
-    entradaPlantel: string;
-    pesoCompra: number;
-    raca: string;
-    codigoRastreamento: string;
-    faseProducao: IFaseTipo;
-    tipoGranja: IFaseTipo;
-}
-
-class AnimalsRepository {
+class AnimalsRepository implements IAnimalsRepository {
     private animals: Animal[];
 
     constructor() {

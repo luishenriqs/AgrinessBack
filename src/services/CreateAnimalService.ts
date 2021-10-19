@@ -1,4 +1,4 @@
-import { AnimalsRepository } from "../repositories/AnimalsRepository";
+import { IAnimalsRepository } from "../repositories/IAnimalsRepository";
 
 interface IFaseTipo {
     sigla: string;
@@ -20,7 +20,7 @@ interface IRequest {
 };
 
 class CreateAnimalService {
-    constructor(private animalsRepository: AnimalsRepository) {
+    constructor(private animalsRepository: IAnimalsRepository) {
 
     };
 
