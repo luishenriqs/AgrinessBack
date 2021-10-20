@@ -4,8 +4,17 @@ import { IAnimalsRepository, ICreateAnimalDTO } from './IAnimalsRepository';
 class AnimalsRepository implements IAnimalsRepository {
     private animals: Animal[];
 
-    constructor() {
+    private static INSTANCE: AnimalsRepository;
+
+    private constructor() {
         this.animals = [];
+    };
+
+    public static getInstance(): AnimalsRepository {
+        if (!AnimalsRepository.INSTANCE) {
+            AnimalsRepository.INSTANCE =  new AnimalsRepository();
+        };
+        return AnimalsRepository.INSTANCE;
     }
 
     create({
