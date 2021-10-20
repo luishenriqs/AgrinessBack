@@ -1,4 +1,4 @@
-import { IAnimalsRepository } from "../repositories/IAnimalsRepository";
+import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
 interface IFaseTipo {
     sigla: string;
@@ -19,10 +19,8 @@ interface IRequest {
     tipoGranja: IFaseTipo;
 };
 
-class CreateAnimalService {
-    constructor(private animalsRepository: IAnimalsRepository) {
-
-    };
+class CreateAnimalUseCase {
+    constructor(private animalsRepository: IAnimalsRepository) {};
 
     execute({
         id,
@@ -44,21 +42,21 @@ class CreateAnimalService {
         throw new Error("Animal`s name alredy exists!")
     }
 
-    this.animalsRepository.create({
-        id,
-        nome,
-        tipoAnimal,
-        statusAnimal,
-        localizacao,
-        dataNascimento,
-        entradaPlantel,
-        pesoCompra,
-        raca,
-        codigoRastreamento,
-        faseProducao,
-        tipoGranja,
-    })
-    }
+        this.animalsRepository.create({
+            id,
+            nome,
+            tipoAnimal,
+            statusAnimal,
+            localizacao,
+            dataNascimento,
+            entradaPlantel,
+            pesoCompra,
+            raca,
+            codigoRastreamento,
+            faseProducao,
+            tipoGranja,
+        })
+    };
 };
 
-export { CreateAnimalService };
+export { CreateAnimalUseCase };
