@@ -1,5 +1,5 @@
-import { Animal } from '../model/Animal';
-import { IAnimalsRepository, ICreateAnimalDTO } from './IAnimalsRepository';
+import { Animal } from '../../model/Animal';
+import { IAnimalsRepository, ICreateAnimalDTO } from '../IAnimalsRepository';
 
 class AnimalsRepository implements IAnimalsRepository {
     private animals: Animal[];

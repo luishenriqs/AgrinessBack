@@ -1,4 +1,4 @@
-import { AnimalsRepository } from '../../repositories/AnimalsRepository';
+import { AnimalsRepository } from '../../repositories/implementations/AnimalsRepository';
 import { CreateAnimalUseCase } from './CreateAnimalUseCase';
 import { CreateAnimalController } from './CreateAnimalController';
 
