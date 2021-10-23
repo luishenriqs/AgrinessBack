@@ -1,4 +1,4 @@
-import { Animal } from "../../model/Animal";
+import { Animal } from "../../entities/Animal";
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
 class ListAnimalsUseCase {

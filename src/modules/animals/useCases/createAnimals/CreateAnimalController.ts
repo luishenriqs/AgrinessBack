@@ -3,11 +3,9 @@ import { CreateAnimalUseCase } from './CreateAnimalUseCase';
 
 class CreateAnimalController {
 
-    constructor(private createAnimalUseCase: CreateAnimalUseCase) {
+    constructor(private createAnimalUseCase: CreateAnimalUseCase) {}
 
-    }
-
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         const {
             id,
             nome,
@@ -19,11 +17,9 @@ class CreateAnimalController {
             pesoCompra,
             raca,
             codigoRastreamento,
-            faseProducao,
-            tipoGranja,
         } = request.body;
        
-        this.createAnimalUseCase.execute({
+        await this.createAnimalUseCase.execute({
             id,
             nome,
             tipoAnimal,
@@ -34,8 +30,6 @@ class CreateAnimalController {
             pesoCompra,
             raca,
             codigoRastreamento,
-            faseProducao,
-            tipoGranja,
         });
     
         return response.status(201).send();

@@ -1,23 +1,16 @@
-import { Animal } from '../../model/Animal';
+import { getRepository, Repository } from 'typeorm';
+import { Animal } from '../../entities/Animal';
 import { IAnimalsRepository, ICreateAnimalDTO } from '../IAnimalsRepository';
 
 class AnimalsRepository implements IAnimalsRepository {
-    private animals: Animal[];
 
-    private static INSTANCE: AnimalsRepository;
+    private repository: Repository<Animal>;
 
-    private constructor() {
-        this.animals = [];
+    constructor() {
+        this.repository = getRepository(Animal); 
     };
 
-    public static getInstance(): AnimalsRepository {
-        if (!AnimalsRepository.INSTANCE) {
-            AnimalsRepository.INSTANCE =  new AnimalsRepository();
-        };
-        return AnimalsRepository.INSTANCE;
-    }
-
-    create({
+    async create({
         id,
         nome,
         tipoAnimal,
@@ -28,12 +21,9 @@ class AnimalsRepository implements IAnimalsRepository {
         pesoCompra,
         raca,
         codigoRastreamento,
-        faseProducao,
-        tipoGranja,
-    }: ICreateAnimalDTO): void {
-        const animal = new Animal();
+    }: ICreateAnimalDTO): Promise<void> {
 
-        Object.assign(animal, {
+        const animal = this.repository.create({
             id,
             nome,
             tipoAnimal,
@@ -44,30 +34,29 @@ class AnimalsRepository implements IAnimalsRepository {
             pesoCompra,
             raca,
             codigoRastreamento,
-            faseProducao,
-            tipoGranja,
         });
 
-        this.animals.push(animal);
+        await this.repository.save(animal);
     }
 
-    list(): Animal[] {
-        return this.animals;
+    async list(): Promise<Animal[]> {
+        const animals = await this.repository.find();
+        return animals;
     }
 
-    findByName(nome: string): Animal {
-        const animal = this.animals.find((animal) => animal.nome === nome);
+    async findByName(nome: string): Promise<Animal> {
+        const animal = await this.repository.findOne({ nome });
         return animal;
     }
 
-    findById(id: string): Animal {
-        const animal = this.animals.find((animal) => animal.id === id);
+    async findById(id: string): Promise<Animal> {
+        const animal = await this.repository.findOne({ id });
         return animal;
     }
 
-    findByLocalization(localizacao: string): Animal {
-        const animal = this.animals.find((animal) => animal.localizacao === localizacao);
-        return animal;
+    async findByLocalization(localizacao: string): Promise<Animal[]> {
+        const animals = await this.repository.find({ localizacao });
+        return animals;
     }
 };
 

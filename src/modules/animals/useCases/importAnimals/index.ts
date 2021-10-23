@@ -2,8 +2,11 @@ import { AnimalsRepository } from '../../repositories/implementations/AnimalsRep
 import { ImportAnimalsController } from "./ImportAnimalsController";
 import { ImportAnimalsUseCase } from "./ImportAnimalsUseCase";
 
-const animalsRepository = AnimalsRepository.getInstance();
-const importAnimalsUseCase = new ImportAnimalsUseCase(animalsRepository);
-const importAnimalsController = new ImportAnimalsController(importAnimalsUseCase);
+export default (): ImportAnimalsController => {
+    const animalsRepository = new AnimalsRepository();
+    const importAnimalsUseCase = new ImportAnimalsUseCase(animalsRepository);
+    const importAnimalsController = new ImportAnimalsController(importAnimalsUseCase);
+    
+    return importAnimalsController;
 
-export { importAnimalsController };
+};

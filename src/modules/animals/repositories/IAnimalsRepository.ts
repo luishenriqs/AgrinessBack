@@ -1,4 +1,4 @@
-import { Animal } from '../model/Animal';
+import { Animal } from '../entities/Animal';
 
 interface IFaseTipo {
     sigla: string;
@@ -16,8 +16,6 @@ interface ICreateAnimalDTO {
     pesoCompra: number;
     raca: string;
     codigoRastreamento: string;
-    faseProducao: IFaseTipo;
-    tipoGranja: IFaseTipo;
 }
 
 interface IAnimalsRepository {
@@ -32,17 +30,15 @@ interface IAnimalsRepository {
         pesoCompra,
         raca,
         codigoRastreamento,
-        faseProducao,
-        tipoGranja,
-    }: ICreateAnimalDTO): void;
+    }: ICreateAnimalDTO): Promise<void>;
 
-    list(): Animal[];
+    list(): Promise<Animal[]>;
 
-    findByName(nome: string): Animal;
+    findByName(nome: string): Promise<Animal>;
 
-    findById(id: string): Animal;
+    findById(id: string): Promise<Animal>;
 
-    findByLocalization(localizacao: string): Animal;
+    findByLocalization(localizacao: string): Promise<Animal[]>;
 };
 
 export { IAnimalsRepository, ICreateAnimalDTO };

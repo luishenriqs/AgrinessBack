@@ -15,14 +15,12 @@ interface IRequest {
     pesoCompra: number;
     raca: string;
     codigoRastreamento: string;
-    faseProducao: IFaseTipo;
-    tipoGranja: IFaseTipo;
 };
 
 class CreateAnimalUseCase {
     constructor(private animalsRepository: IAnimalsRepository) {};
 
-    execute({
+    async execute({
         id,
         nome,
         tipoAnimal,
@@ -33,11 +31,9 @@ class CreateAnimalUseCase {
         pesoCompra,
         raca,
         codigoRastreamento,
-        faseProducao,
-        tipoGranja,
-    }: IRequest): void {
+    }: IRequest): Promise<void> {
 
-    const animalAlredyExists = this.animalsRepository.findByName(nome);
+    const animalAlredyExists = await this.animalsRepository.findByName(nome);
     if(animalAlredyExists) {
         throw new Error("Animal`s name alredy exists!")
     }
@@ -53,8 +49,6 @@ class CreateAnimalUseCase {
             pesoCompra,
             raca,
             codigoRastreamento,
-            faseProducao,
-            tipoGranja,
         })
     };
 };

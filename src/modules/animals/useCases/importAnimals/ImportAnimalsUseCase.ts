@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { Animal } from '../../model/Animal';
+import { Animal } from '../../entities/Animal';
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
 class ImportAnimalsUseCase {
@@ -33,8 +33,6 @@ class ImportAnimalsUseCase {
                 pesoCompra,
                 raca,
                 codigoRastreamento,
-                faseProducao,
-                tipoGranja,
             } = animal;
 
             const existAnimal = this.animalsRepository.findByName(nome);
@@ -51,8 +49,6 @@ class ImportAnimalsUseCase {
                     pesoCompra,
                     raca,
                     codigoRastreamento,
-                    faseProducao,
-                    tipoGranja,
                 });
             };
         });
