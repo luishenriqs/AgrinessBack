@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import { CreateAnimalUseCase } from './CreateAnimalUseCase';
 
 class CreateAnimalController {
-
-    constructor(private createAnimalUseCase: CreateAnimalUseCase) {}
-
     async handle(request: Request, response: Response): Promise<Response> {
         const {
             id,
@@ -19,7 +17,9 @@ class CreateAnimalController {
             codigoRastreamento,
         } = request.body;
        
-        await this.createAnimalUseCase.execute({
+        const createAnimalUseCase = container.resolve(CreateAnimalUseCase);
+
+        await createAnimalUseCase.execute({
             id,
             nome,
             tipoAnimal,

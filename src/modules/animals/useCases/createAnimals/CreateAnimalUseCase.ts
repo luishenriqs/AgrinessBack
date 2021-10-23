@@ -1,9 +1,6 @@
+import { inject, injectable } from 'tsyringe';
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
-interface IFaseTipo {
-    sigla: string;
-    descricao: string;
-}
 interface IRequest {
     id: string;
     nome: string;
@@ -17,8 +14,12 @@ interface IRequest {
     codigoRastreamento: string;
 };
 
+@injectable()
 class CreateAnimalUseCase {
-    constructor(private animalsRepository: IAnimalsRepository) {};
+    constructor(
+        @inject("AnimalsRepository")
+        private animalsRepository: IAnimalsRepository
+    ) {};
 
     async execute({
         id,
@@ -34,9 +35,9 @@ class CreateAnimalUseCase {
     }: IRequest): Promise<void> {
 
     const animalAlredyExists = await this.animalsRepository.findByName(nome);
-    if(animalAlredyExists) {
-        throw new Error("Animal`s name alredy exists!")
-    }
+        if(animalAlredyExists) {
+            throw new Error("Animal`s name alredy exists!")
+        }
 
         this.animalsRepository.create({
             id,

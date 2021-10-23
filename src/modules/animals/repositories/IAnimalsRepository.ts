@@ -1,10 +1,5 @@
 import { Animal } from '../entities/Animal';
 
-interface IFaseTipo {
-    sigla: string;
-    descricao: string;
-}
-
 interface ICreateAnimalDTO {
     id: string;
     nome: string;

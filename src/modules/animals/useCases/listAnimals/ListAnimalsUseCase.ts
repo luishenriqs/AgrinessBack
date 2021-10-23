@@ -1,10 +1,15 @@
 import { Animal } from "../../entities/Animal";
+import { inject, injectable } from 'tsyringe';
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
+@injectable()
 class ListAnimalsUseCase {
-    constructor(private animalsRepository: IAnimalsRepository) {};
-    execute(): Animal[] {
-        const animals = this.animalsRepository.list();
+    constructor(
+        @inject("AnimalsRepository")
+        private animalsRepository: IAnimalsRepository
+    ) {};
+    async execute(): Promise<Animal[]> {
+        const animals = await this.animalsRepository.list();
         return animals;
     }
 };

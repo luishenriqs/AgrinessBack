@@ -1,9 +1,14 @@
 import fs from 'fs';
+import { inject, injectable } from 'tsyringe';
 import { Animal } from '../../entities/Animal';
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 
+@injectable()
 class ImportAnimalsUseCase {
-    constructor(private animalsRepository: IAnimalsRepository) {};
+    constructor(
+        @inject("AnimalsRepository")
+        private animalsRepository: IAnimalsRepository
+    ) {};
 
     loadingFile = (file: Express.Multer.File, encoding) => {
         return new Promise<Animal[]>((resolve, reject) => {
@@ -38,7 +43,7 @@ class ImportAnimalsUseCase {
             const existAnimal = this.animalsRepository.findByName(nome);
 
             if(!existAnimal) {
-                this.animalsRepository.create({
+                await this.animalsRepository.create({
                     id,
                     nome,
                     tipoAnimal,

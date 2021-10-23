@@ -1,15 +1,25 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
-
-class FaseTipo {
-    sigla: string;
-    descricao: string;
-}
+import {
+    Column,
+    CreateDateColumn,
+    Entity, JoinColumn, OneToOne, PrimaryColumn,
+    UpdateDateColumn
+} from 'typeorm';
+import { Tipo } from './Tipo';
+import { Fase } from './Fase';
 
 @Entity("animals")
 class Animal {
     @PrimaryColumn()
     id?: string;
+
+    @OneToOne(type => Tipo)
+    @JoinColumn()
+    tipo: Tipo
+
+    @OneToOne(type => Fase)
+    @JoinColumn()
+    fase: Fase
 
     @Column()
     nome: string;
@@ -37,6 +47,12 @@ class Animal {
 
     @Column()
     codigoRastreamento: string;
+
+    @CreateDateColumn({ name: 'created_at' })
+    created_at: Date;
+
+    @UpdateDateColumn({ name: 'updated_at' })
+    updated_at: Date;
 
     constructor() {
         if(!this.id) {
