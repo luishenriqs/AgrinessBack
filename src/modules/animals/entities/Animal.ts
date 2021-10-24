@@ -5,21 +5,21 @@ import {
     Entity, JoinColumn, OneToOne, PrimaryColumn,
     UpdateDateColumn
 } from 'typeorm';
-import { Tipo } from './Tipo';
-import { Fase } from './Fase';
+import { TipoGranja } from './TipoGranja';
+import { FaseProducao } from './FaseProducao';
 
 @Entity("animals")
 class Animal {
     @PrimaryColumn()
     id?: string;
 
-    @OneToOne(type => Tipo)
+    @OneToOne(type => TipoGranja)
     @JoinColumn()
-    tipo: Tipo
+    tipoGranja: TipoGranja
 
-    @OneToOne(type => Fase)
+    @OneToOne(type => FaseProducao)
     @JoinColumn()
-    fase: Fase
+    faseProducao: FaseProducao
 
     @Column()
     nome: string;
@@ -27,8 +27,8 @@ class Animal {
     @Column()
     tipoAnimal: string;
 
-    @Column()
-    statusAnimal: number;
+    @Column({type: 'real'})
+    statusAnimal: string;
 
     @Column()
     localizacao: string;
@@ -39,8 +39,8 @@ class Animal {
     @Column()
     entradaPlantel: string;
 
-    @Column()
-    pesoCompra: number;
+    @Column({type: 'real'})
+    pesoCompra: string;
 
     @Column()
     raca: string;

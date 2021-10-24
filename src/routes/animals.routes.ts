@@ -13,7 +13,6 @@ const createAnimalController = new CreateAnimalController();
 const listAnimalsController = new ListAnimalsController();
 const importAnimalsController = new ImportAnimalsController();
 
-
 animalsRoutes.post("/", createAnimalController.handle);
 
 animalsRoutes.get("/", listAnimalsController.handle);

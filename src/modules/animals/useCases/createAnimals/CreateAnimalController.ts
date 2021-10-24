@@ -15,6 +15,8 @@ class CreateAnimalController {
             pesoCompra,
             raca,
             codigoRastreamento,
+            faseProducao,
+            tipoGranja,
         } = request.body;
        
         const createAnimalUseCase = container.resolve(CreateAnimalUseCase);
@@ -30,6 +32,8 @@ class CreateAnimalController {
             pesoCompra,
             raca,
             codigoRastreamento,
+            faseProducao,
+            tipoGranja,
         });
     
         return response.status(201).send();

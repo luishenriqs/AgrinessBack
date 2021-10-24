@@ -6,7 +6,7 @@ import {
     UpdateDateColumn
 } from 'typeorm';
 
-@Entity("tipo")
+@Entity("tipoGranja")
 class TipoGranja {
     @PrimaryColumn()
     id?: string;

@@ -4,11 +4,11 @@ interface ICreateAnimalDTO {
     id: string;
     nome: string;
     tipoAnimal: string;
-    statusAnimal: number;
+    statusAnimal: string;
     localizacao: string;
     dataNascimento: string;
     entradaPlantel: string;
-    pesoCompra: number;
+    pesoCompra: string;
     raca: string;
     codigoRastreamento: string;
 }
