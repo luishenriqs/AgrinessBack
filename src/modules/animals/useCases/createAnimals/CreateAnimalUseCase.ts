@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors/AppError';
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 import { IFaseProducaoRepository } from "../../repositories/IFaseProducaoRepository";
 import { ITipoGranjaRepository } from "../../repositories/ITipoGranjaRepository";
@@ -52,7 +53,7 @@ class CreateAnimalUseCase {
 
     const animalAlredyExists = await this.animalsRepository.findByName(nome);
         if(animalAlredyExists) {
-            throw new Error("Animal`s name alredy exists!")
+            throw new AppError("Animal`s name alredy exists!")
         }
 
         await this.animalsRepository.create({
