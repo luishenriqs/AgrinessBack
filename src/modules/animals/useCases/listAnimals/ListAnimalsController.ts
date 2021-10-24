@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import { ListAnimalsUseCase } from './ListAnimalsUseCase';
 
 class ListAnimalsController {
-    async handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response): Promise<Response> {
         const listAnimalsUseCase = container.resolve(ListAnimalsUseCase);
         const all = await listAnimalsUseCase.execute();
         return response.json(all);
