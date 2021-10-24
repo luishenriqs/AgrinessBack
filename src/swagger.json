@@ -1,0 +1,157 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Agriness Documentation",
+        "description": "This is an api for a technical test",
+        "version": "1.0.0",
+        "contact": {
+            "email": "lh.p@hotmail.com"
+        }
+    },
+    "paths": {
+        "/animals": {
+            "post": {
+                "tags": ["Animals"],
+                "summary": "Create animal",
+                "description": "Insert a new animal into the system",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "tipoAnimal": {
+                                        "type": "string"
+                                    },
+                                    "statusAnimal": {
+                                        "type": "string"
+                                    },
+                                    "localizacao": {
+                                        "type": "string"
+                                    },
+                                    "dataNascimento": {
+                                        "type": "string"
+                                    },
+                                    "entradaPlantel": {
+                                        "type": "string"
+                                    },
+                                    "pesoCompra": {
+                                        "type": "string"
+                                    },
+                                    "raca": {
+                                        "type": "string"
+                                    },
+                                    "codigoRastreamento": {
+                                        "type": "string"
+                                    },
+                                    "faseProducao":{
+                                        "sigla":"string",
+                                        "descricao":"string"
+                                    },
+                                    "tipoGranja":{
+                                        "sigla":"string",
+                                        "descricao":"string"
+                                    }
+                                },
+                                "example": {
+                                    "id":"319846198719876519874651984",
+                                    "nome":"Animal for example",
+                                    "tipoAnimal":"POULTRY",
+                                    "statusAnimal":3,
+                                    "localizacao":"Room 5",
+                                    "dataNascimento":"2017-06-29 02:53",
+                                    "entradaPlantel":"2019-06-16",
+                                    "pesoCompra":98.934,
+                                    "raca":"ac-7077/m",
+                                    "codigoRastreamento":"649846549841987465194",
+                                    "faseProducao":{
+                                        "sigla":"ENG",
+                                        "descricao":"Growth stage"
+                                    },
+                                    "tipoGranja":{
+                                        "sigla":"URE",
+                                        "descricao":"Recreate"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "responses":{
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Authenticate error"
+                    },
+                    "501": {
+                        "description": "Internal server errror"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Animals"],
+                "summary": "List all animals",
+                "description": "Brings a list of all animals",
+                "responses":{
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "nome": {
+                                            "type": "string"
+                                        },
+                                        "tipoAnimal": {
+                                            "type": "string"
+                                        },
+                                        "statusAnimal": {
+                                            "type": "string"
+                                        },
+                                        "localizacao": {
+                                            "type": "string"
+                                        },
+                                        "dataNascimento": {
+                                            "type": "string"
+                                        },
+                                        "entradaPlantel": {
+                                            "type": "string"
+                                        },
+                                        "pesoCompra": {
+                                            "type": "string"
+                                        },
+                                        "raca": {
+                                            "type": "string"
+                                        },
+                                        "codigoRastreamento": {
+                                            "type": "string"
+                                        },
+                                        "faseProducao":{
+                                            "sigla":"string",
+                                            "descricao":"string"
+                                        },
+                                        "tipoGranja":{
+                                            "sigla":"string",
+                                            "descricao":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
