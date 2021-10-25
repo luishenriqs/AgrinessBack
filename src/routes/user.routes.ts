@@ -3,8 +3,8 @@ import { CreateUserController } from "../modules/accounts/useCases/createUser/Cr
 
 const userRoutes = Router();
 
-const createAnimalController = new CreateUserController();
+const createUserController = new CreateUserController();
 
-userRoutes.post("/", createAnimalController.handle);
+userRoutes.post("/", createUserController.handle);
 
 export { userRoutes };

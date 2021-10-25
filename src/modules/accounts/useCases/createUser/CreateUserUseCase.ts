@@ -13,7 +13,6 @@ class CreateUserUseCase {
     ) {};
 
     async execute({
-        id,
         user_name,
         email,
         password,
@@ -21,14 +20,13 @@ class CreateUserUseCase {
 
         const passwordHash = await hash(password, 8);
 
-        const userIdAlredyExists = await this.userRepository.findById(id);
+        const emailAlredyExists = await this.userRepository.findByEmail(email);
 
-        if(userIdAlredyExists) {
-            throw new AppError("user`s Id alredy exists!")
+        if(emailAlredyExists) {
+            throw new AppError("user`s email alredy exists!")
         }
 
         await this.userRepository.create({
-            id,
             user_name,
             email,
             password: passwordHash,

@@ -3,7 +3,6 @@ import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 
 interface IUserRepository {
     create({
-        id,
         user_name,
         email,
         password,
