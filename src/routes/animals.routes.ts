@@ -6,6 +6,7 @@ import { ImportAnimalsController } from "../modules/animals/useCases/importAnima
 import { FindNameController } from '../modules/animals/useCases/findName/FindNameController';
 import { FindIdController } from '../modules/animals/useCases/findId/FindIdController';
 import { FindLocalizationController } from '../modules/animals/useCases/findLocalization/FindLocalizationController';
+import { DeleteController } from "../modules/animals/useCases/delete/DeleteController";
 
 const animalsRoutes = Router();
 const upload = multer({
@@ -17,6 +18,7 @@ const listAnimalsController = new ListAnimalsController();
 const findNameController = new FindNameController();
 const findIdController = new FindIdController();
 const findLocalizationController = new FindLocalizationController();
+const deleteController = new DeleteController();
 const importAnimalsController = new ImportAnimalsController();
 
 animalsRoutes.post("/", createAnimalController.handle);
@@ -28,6 +30,8 @@ animalsRoutes.get("/findname", findNameController.handle);
 animalsRoutes.get("/findid", findIdController.handle);
 
 animalsRoutes.get("/findlocalization", findLocalizationController.handle);
+
+animalsRoutes.delete("/delete", deleteController.handle);
 
 animalsRoutes.post("/import", upload.single("file"), importAnimalsController.handle);
 

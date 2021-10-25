@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+import { AppError } from '../../../../errors/AppError';
 import { Animal } from '../../entities/Animal';
 import { IAnimalsRepository, ICreateAnimalDTO } from '../IAnimalsRepository';
 
@@ -57,6 +58,14 @@ class AnimalsRepository implements IAnimalsRepository {
     async findByLocalization(localizacao: string): Promise<Animal[]> {
         const animals = await this.repository.find({ localizacao });
         return animals;
+    }
+
+    async delete(id: string): Promise<void> {
+        const animal = await this.repository.findOne({ id });
+        if (!animal) {
+            throw new AppError('This animal does not exist');
+        }
+        await this.repository.remove(animal);
     }
 };
 
