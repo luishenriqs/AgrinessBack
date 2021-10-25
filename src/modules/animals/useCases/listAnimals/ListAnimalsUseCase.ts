@@ -1,5 +1,6 @@
-import { Animal } from "../../entities/Animal";
+import "reflect-metadata"
 import { inject, injectable } from 'tsyringe';
+import { Animal } from "../../entities/Animal";
 import { IAnimalsRepository } from "../../repositories/IAnimalsRepository";
 import { IFaseProducaoRepository } from "../../repositories/IFaseProducaoRepository";
 import { ITipoGranjaRepository } from "../../repositories/ITipoGranjaRepository";

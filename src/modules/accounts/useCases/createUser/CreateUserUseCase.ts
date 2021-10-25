@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import { inject, injectable } from 'tsyringe';
 import { hash } from 'bcryptjs';
 import { IUserRepository } from "../../repositories/IUserRepository";
