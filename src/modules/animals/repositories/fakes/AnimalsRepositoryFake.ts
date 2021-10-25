@@ -1,3 +1,4 @@
+import { AppError } from '../../../../errors/AppError';
 import { Animal } from '../../entities/Animal';
 import { IAnimalsRepository, ICreateAnimalDTO } from '../IAnimalsRepository';
 
@@ -52,6 +53,23 @@ class AnimalsRepositoryFake implements IAnimalsRepository {
     async findByLocalization(localizacao: string): Promise<Animal[]> {
         const animals = this.repository.filter((animal: Animal) => animal.localizacao === localizacao);
         return animals;
+    }
+
+    async delete(id: string): Promise<void> {
+        const animal = await this.repository.find((animal: Animal) => animal.id === id);
+        if (!animal) {
+            throw new AppError('This animal does not exist');
+        }
+        this.repository.filter((animal: Animal) => animal.id !== id);
+    }
+
+    async update(id: string, localizacao: string): Promise<Animal> {
+        const animal = await this.repository.find((animal: Animal) => animal.id === id);
+        if (!animal) {
+            throw new AppError('This animal does not exist');
+        }
+        animal.localizacao = localizacao;
+        return animal;
     }
 };
 

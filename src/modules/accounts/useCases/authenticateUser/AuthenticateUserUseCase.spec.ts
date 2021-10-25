@@ -20,7 +20,6 @@ describe("Authenticate user", () => {
 
     it("Should be able to authenticate an user", async () => {
         const user: ICreateUserDTO = {
-            id: "919865198761649", 
             user_name: "Jonh Doe", 
             email: "jonhDoe@test.com", 
             password: "123456", 
@@ -47,7 +46,6 @@ describe("Authenticate user", () => {
     it("Should not be able to authenticate with incorrect password", async () => {
         expect(async () => {
             const user: ICreateUserDTO = {
-                id: "919865198761649", 
                 user_name: "Jonh Doe", 
                 email: "jonhDoe@test.com", 
                 password: "123456", 

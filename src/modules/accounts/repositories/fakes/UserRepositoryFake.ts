@@ -6,7 +6,6 @@ class UserRepositoryFake implements IUserRepository {
     users: User[] = [];
 
     async create({
-        id, 
         user_name, 
         email, 
         password, 
@@ -14,7 +13,6 @@ class UserRepositoryFake implements IUserRepository {
         const user = new User();
 
         Object.assign(user, {
-            id, 
             user_name, 
             email, 
             password, 
