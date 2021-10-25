@@ -36,6 +36,8 @@ interface IAnimalsRepository {
     findByLocalization(localizacao: string): Promise<Animal[]>;
 
     delete(id: string): Promise<void>;
+
+    update(id: string, localizacao: string): Promise<Animal>;
 };
 
 export { IAnimalsRepository, ICreateAnimalDTO };

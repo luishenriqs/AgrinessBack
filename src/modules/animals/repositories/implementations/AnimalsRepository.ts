@@ -67,6 +67,16 @@ class AnimalsRepository implements IAnimalsRepository {
         }
         await this.repository.remove(animal);
     }
+
+    async update(id: string, localizacao: string): Promise<Animal> {
+        const animal = await this.repository.findOne({ id });
+        if (!animal) {
+            throw new AppError('This animal does not exist');
+        }
+        animal.localizacao = localizacao;
+        await this.repository.save(animal);
+        return animal;
+    }
 };
 
 export { AnimalsRepository };
