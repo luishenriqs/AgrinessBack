@@ -1,5 +1,4 @@
 import { AppError } from "../../../../errors/AppError";
-import { userRoutes } from "../../../../routes/user.routes";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { UserRepositoryFake } from "../../repositories/fakes/UserRepositoryFake";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
