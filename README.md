@@ -1,5 +1,20 @@
 ### AGRINESS ###
 
+# SOBRE O PROJETO
+
+Esta a api do projeto Agriness. O Agriness é uma aplicação mobile para administrar uma granja de animais. Com ela é possível ter o controle de todos os animais, sua localização, dados cadastrais, peso e estágio de desenvolvimeto. O usuário também pode cadastrar ou deletar animais conforme são negociados atualizando assim sua lista.
+Ela foi desenvolvida durante um teste técnico.
+
+# TECNOLOGIAS UTILIZADAS 
+
+## BACKEND
+
+Typescript, NodeJs, Express, JWT, Multer, Docker.
+
+## FRONTEND 
+
+Typescrip, React-Native, Styled-Components, Expo.
+
 # CADASTRO DE USUÁRIOS
 
 **REQUISITOS FUNCIONAIS**
@@ -52,4 +67,13 @@ Utilizar o Jest para realização de testes automatizados.
 
 **REGRAS DE NEGÓCIO**
 
-Não deve ser possível cadastrar um novo animal com um nome já existente
+Não deve ser possível cadastrar um novo animal com um nome já existente.
+
+
+# AUTOR
+
+Luís Henrique Pereira
+
+https://www.linkedin.com/in/luis-h-pereira-nodejs-react-native/
+
+lh.p@hotmail.com
