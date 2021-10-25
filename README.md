@@ -9,11 +9,23 @@ Ela foi desenvolvida durante um teste técnico.
 
 ## BACKEND
 
-Typescript, NodeJs, Express, JWT, Multer, Docker.
+Typescript, NodeJs, Express, JWT, Multer, Docker, Swagger.
 
 ## FRONTEND 
 
 Typescrip, React-Native, Styled-Components, Expo.
+
+# COMO EXECUTAR O PROJETO
+
+## Clonar o repositório
+https://github.com/luishenriqs/AgrinessBack
+
+## Entrar na pasta do projeto
+agriness-node
+
+## Executar o projeto no terminal
+yarn typeorm migration:run
+docker-compose up
 
 # CADASTRO DE USUÁRIOS
 
@@ -25,6 +37,7 @@ Deve ser possível buscar um usuário por email ou id.
 **REQUISITOS NÃO FUNCIONAIS**
 
 A senha do usuário deve ser criptografada com a lib bcryptjs.
+Salvar todos os dados da aplicação em uma database "Postgres".
 
 **REGRAS DE NEGÓCIO**
 
