@@ -4,7 +4,7 @@ import { FindLocalizationUseCase } from './FindLocalizationUseCase';
 
 class FindLocalizationController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { localization } = request.body;
+        const { localization } = request.query;
         const findLocalizationUseCase = container.resolve(FindLocalizationUseCase);
         const animal = await findLocalizationUseCase.execute({ localization });
         return response.json(animal);
