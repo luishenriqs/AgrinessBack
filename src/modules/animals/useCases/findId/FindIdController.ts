@@ -4,7 +4,7 @@ import { FindIdUseCase } from './FindIdUseCase';
 
 class FindIdController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.body;
+        const { id } = request.query;
         const findIdUseCase = container.resolve(FindIdUseCase);
         const animal = await findIdUseCase.execute({ id });
         return response.json(animal);
